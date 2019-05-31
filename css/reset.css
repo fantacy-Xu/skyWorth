@@ -1,0 +1,42 @@
+html,body,h1,h2,h3,h4,h5,h6,ul,li,ol,dl,dt,dd,p,form,fieldset,legend,img,button{
+    margin: 0;padding: 0;
+}
+fieldset,img{
+    border: none;
+}
+img{
+    border: 0;
+}
+address.caption,cite,code,dfn,th,var{
+    font-style: normal;font-weight: normal;
+}
+h1,h2,h3,h4,h5,h6{
+    font-weight: normal;
+}
+ul,ol{
+    list-style: none;
+}
+input{
+    outline: none;
+}
+body{
+    font: 12px "微软雅黑","SimSun","宋体","Arial Narrow";
+}
+a{
+    text-decoration: none;
+}
+a:visited{
+    color: #666;
+}
+table{
+    border-collapse: collapse;border-spacing: 0;
+}
+.clearfixed::after{
+    content: ".";
+    font-size: 1px;
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    clear: both;
+}
