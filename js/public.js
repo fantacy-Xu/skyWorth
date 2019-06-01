@@ -13,6 +13,11 @@
         }
     }
     document.onscroll();
+    //返回顶部
+    $('.btnBackTop').click(function(){
+        /* document.body.scrollTop = document.documentElement.scrollTop = 0; */
+        $('html,body').animate({scrollTop:0},'slow');//动画返回顶部
+    })
      //懒加载
         //获取可视区高度
     var viewHeiht = document.documentElement.clientHeight || document.body.clientHeight;

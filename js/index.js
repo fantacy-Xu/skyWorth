@@ -35,12 +35,12 @@
             str += `
                     <div class="listCon">
                         <div class="list_pro">
-                            <a href="http://10.36.140.214/skyWorth/html/index.html?id=${data[i].id}" target="_blank">
+                            <a href="http://10.36.140.214/skyWorth_xiangqing/html/index.html?id=${data[i].id}" target="_blank">
                                 <img lazyload="true" data-original="../images/indexImg/${data[i].img}.jpg" src="" alt="" height="190">
                             </a>
                         </div>
                         <div class="list_bottom">
-                            <h5><a href="http://10.36.140.214/skyWorth/html/index.html?id=${data[i].id}" target="_blank">${data[i].title}</a></h5>
+                            <h5><a href="http://10.36.140.214/skyWorth_xiangqing/html/index.html?id=${data[i].id}" target="_blank">${data[i].title}</a></h5>
                             <p>${data[i].contents}</p>
                             <div class="price">￥${data[i].price}</div>
                         </div>
@@ -128,8 +128,5 @@
         $('.lock').append(lock_other);
 
     },'json');
-    //返回顶部
-    $('.btnBackTop').click(function(){
-        document.body.scrollTop = document.documentElement.scrollTop = 0;
-    })
+    
 })()
