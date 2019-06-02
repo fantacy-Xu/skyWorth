@@ -35,12 +35,12 @@
             str += `
                     <div class="listCon">
                         <div class="list_pro">
-                            <a href="http://10.36.140.214/skyWorth_xiangqing/html/index.html?id=${data[i].id}" target="_blank">
+                            <a href="../html/details.html?id=${data[i].id}" target="_blank">
                                 <img lazyload="true" data-original="../images/indexImg/${data[i].img}.jpg" src="" alt="" height="190">
                             </a>
                         </div>
                         <div class="list_bottom">
-                            <h5><a href="http://10.36.140.214/skyWorth_xiangqing/html/index.html?id=${data[i].id}" target="_blank">${data[i].title}</a></h5>
+                            <h5><a href="../html/details.html?id=${data[i].id}" target="_blank">${data[i].title}</a></h5>
                             <p>${data[i].contents}</p>
                             <div class="price">￥${data[i].price}</div>
                         </div>
@@ -52,7 +52,7 @@
                         <div class="list_hover">
                             <span class="hover_price">￥${data[i].price}</span>
                             <span class="shop_car ripple">
-                                <a href="http://10.36.140.214/skyWorth/html/index.html?id=${data[i].id}">加入购物车</a>
+                                <a href="../html/details.html?id=${data[i].id}">加入购物车</a>
                             </span>
                         </div>
                     </div>
@@ -66,11 +66,11 @@
         str = `
                 <div class="listCon list_cont_two">
                     <div class="list_pro">
-                        <a href="http://10.36.140.214/skyWorth/html/index.html?id=${data[index].id}">
+                        <a href="../html/details.html?id=${data[index].id}">
                         <img lazyload="true" data-original="../images/indexImg/${data[index].img}.jpg" src="" alt="" height="240"></a>
                     </div>
                     <div class="list_bottom">
-                        <h5><a href="http://10.36.140.214/skyWorth/html/index.html?id=${data[index].id}">${data[index].title}</a></h5>
+                        <h5><a href="../html/details.html?id=${data[index].id}">${data[index].title}</a></h5>
                         <P>${data[index].contents}</P>
                         <div class="price">￥${data[index].price}</div>
                     </div>
@@ -78,7 +78,7 @@
                     <div class="list_hover">
                         <span class="hover_price">￥${data[index].price}</span>
                         <span class="shop_car ripple">
-                            <a href="http://10.36.140.214/skyWorth/html/index.html?id=${data[index].id}">加入购物车</a>
+                            <a href="../html/details.html?id=${data[index].id}">加入购物车</a>
                         </span>
                     </div>
                 </div>
