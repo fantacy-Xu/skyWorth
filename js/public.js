@@ -11,13 +11,13 @@
         }else{
             $('.btnBackTop').css('display','none');
         }
-    }
+    };
     document.onscroll();
     //返回顶部
     $('.btnBackTop').click(function(){
         /* document.body.scrollTop = document.documentElement.scrollTop = 0; */
         $('html,body').animate({scrollTop:0},'slow');//动画返回顶部
-    })
+    });
      //懒加载
         //获取可视区高度
     var viewHeiht = document.documentElement.clientHeight || document.body.clientHeight;
@@ -35,7 +35,7 @@
                     img.src = item.dataset.original;
                     img.onload = function(){
                         item.src = img.src;
-                    }
+                    };
                     item.removeAttribute("data-original");
                     item.removeAttribute("lazyload");
                 }();
@@ -45,4 +45,4 @@
     lazyload();//初始化，先触发一次函数
     document.addEventListener('scroll',lazyload);
 
-})()
+})();

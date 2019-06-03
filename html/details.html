@@ -160,7 +160,7 @@
         <!--导航路径-->
         <div class="crumb">
             <div class="breadcrumb">
-                <a href="#">首页</a><em>/</em>
+                <a href="index.html">首页</a><em>/</em>
                 <a href="#">商品列表</a> <em>/</em>
                 <a href="#" class="active">产品详情页</a>
 
@@ -532,8 +532,26 @@
         var indexId = page_url.split("=")[1];
 
         location.href = `./shopCar.html?id=${indexId}&proNum=${proNum}` ;
-    })
+    });
 
+
+    $('#btn_a_add_shop_cart').on('click',function () {
+        //拿到商品的数量
+        var proNum = $('#inpQuantity').val();
+
+        if(proNum == '' ){
+            layer.msg('商品数量格式有误');
+            return;
+        }
+
+        //拿到当前页面的url
+        var page_url = location.search ;
+
+        //拿到数据的id
+        var indexId = page_url.split("=")[1];
+
+        location.href = `./shopCar.html?id=${indexId}&proNum=${proNum}` ;
+    });
     $('#btn_add_l_shop_cart').on('click',function () {
         //拿到商品的数量
         var proNum = $('#inpQuantity').val();
