@@ -1,0 +1,255 @@
+.header{
+    width:100%;
+    height:100px;
+    box-shadow:0 0 20px -4px rgba(0,0,0,.2);
+ }
+ .header_top{
+     width:1090px;
+     margin:0 auto;
+ }
+ .logo>a{
+     height: 85px;
+     float: left;
+     
+     
+ }
+ .logo img{
+     width: 268px;
+     margin-top:35px;
+     
+ }
+ .login{
+     float:right;
+     margin-top:35px;
+     font-size:14px;
+     color:#333;
+ }
+ .login a {
+    font-size:14px;
+     color:red;
+     text-decoration:none;
+ }
+
+ /*   header end */
+
+ .register{
+     width:540px;
+     border-radius: 15px;
+     padding:30px 47px 0 47px;
+     margin:30px auto;
+     position: relative;
+     box-shadow:0 0 20px -4px rgba(0,0,0,.2);
+ }
+ .wire{
+    width:100%;
+    height:5px;
+    background: #eff3f8;
+    margin-top:21px; 
+ }
+ .wire p{
+    padding-top: 10px;
+    color:#999;
+ }
+ .wire ul li{
+    float: left;
+    width:33.3%;
+    text-align: center;
+    transition:all,0.7s;
+
+ }
+ .wire_a{
+    height: 5px;
+    background: #2e8ae4;
+ }
+ .wire_a p{
+     color:#466faa;
+ }
+ .wire li.wire_a span{ 
+     background:#2e8ae4;
+     text-align: center;
+     font-size:16px;
+     color:#fff;
+}
+ .wire  li span{
+    position: relative;
+    top:-15px;
+    margin:0 auto;
+    font-size:18px;
+    line-height: 34px;
+    display: block;
+    transition:all,0.7s;
+    color:#999;
+    height:34px;
+    width:34px;
+    background: #eff3f8;
+    border-radius:50%;
+ }
+ .wire ul li p{
+    margin-top:-10px;
+    font-size:14px;
+ }
+ /*     wire   end */
+
+ .content p{
+    color:#999;
+    font-size:12px;
+ }
+ .content{
+     margin-top:50px;
+     display: none;
+ }
+#checkCode{
+    width:100px;
+    height:50px;
+    position: relative;
+    top:-55px;
+    left:330px;
+}
+#btn_a{
+    border:0;
+    background: #fff;
+    font-size:14px;
+    position: relative;
+    top:-100px;
+    left: 380px;
+    outline:none;
+}
+.code_a{
+    height:140px;
+}
+ .code_a input{
+     width:100%;
+     height:50px;
+     border-radius: 5px;
+     outline :none;
+     font-size:16px;
+     margin-top:50px;
+     border: 1px solid #ccc;
+     padding:0 37px;
+ }
+ body .ico-yzm-a{
+    font-size:26px;
+    position: absolute;
+    left:53px;
+    top:165px;
+    color:#ccc;
+}
+
+ .code_b input{
+    width:100%;
+    height:50px;
+    border-radius: 5px;
+    outline :none;
+    font-size:16px;
+    border: 1px solid #ccc;
+    padding:0 37px;
+}
+body .ico-yzm-b{
+    font-size:26px;
+    position: absolute;
+    left:53px;
+    top:251px;
+    color:#ccc;
+}
+.code_c input{
+    width:100%;
+    height:50px;
+    border-radius: 5px;
+    outline :none;
+    margin-top:20px;
+    font-size:14px;
+    border: 1px solid #ccc;
+    padding:0 0 0 37px;;
+}
+body .ico-yzm-c{
+    font-size:26px;
+    position: absolute;
+    left:53px;
+    top:340px;
+    color:#ccc;
+}
+body .ico-yzm-s{
+    font-size:36px;
+    position: absolute;
+    left:48px;
+    top:158px;
+    color:#ccc;
+}
+.btn{
+    background: #2e8ae4;
+    width:100%;
+    margin-top:40px;
+    height:50px;
+    color:#fff;
+    margin-bottom:20px;
+}
+.btn1{
+    background: #2e8ae4;
+    width:100%;
+    margin-top:40px;
+    height:50px;
+    color:#fff;
+    margin-bottom:20px;
+    border: 0;
+}
+.content .code_c .code_yz{
+    width:350px;
+}
+.content .code_c .code_d{
+    position: absolute;
+    top:312px;
+    left: 392px;
+    width:100px;
+    height:51px;
+    border:0;
+    border-radius: 2px;
+    padding: 0;
+}
+.cg{
+    padding:30px;
+    text-align: center;
+}
+body .cg .ico-cg{
+    color:#0bbe06;
+    font-size:100px;
+}
+.cg p{
+    color:#000;
+    font-size:16px;
+}
+.cg a{
+    font-size: 16px;
+    color:red;
+    text-decoration: none;
+}
+
+
+/*    content  end */
+.footer{
+    width:100%;
+    height: 100px;
+    background: #fff;
+}
+.foot{
+    width:1210px;
+    margin: 0 auto;
+    text-align: center;
+    
+}
+.foot ul{
+    height:20px;
+    padding:30px 0 30px 0;
+    display: inline-block;
+}
+.foot ul li{
+    float: left;
+    color:#999;
+    padding:0 5px;
+}
+.foot p{
+    color:#999;
+}
+
+
+
+
