@@ -69,8 +69,9 @@ function carChange(carList,id,num){//购物车数据发生改变的时候，加�
     }
     localStorage.setItem('carList',JSON.stringify(carList));
 }
-
+//构造一个实例对象（用于全局中使用这个实例对象）
 var car = new Car();
+//下拉吸顶效果
 window.onload = function(){
     document.onscroll = function(){
         var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
@@ -82,7 +83,7 @@ window.onload = function(){
         }
     }
 }
-
+//地址栏没有携带ID时封装的方法
 function noIdgetGoods(){
     var carList = car.getCar();
     var str = ``;
@@ -139,7 +140,7 @@ function noIdgetGoods(){
         $('.car_box').html(str);
     }
 }
-
+//地址栏有携带ID时封装的方法
 function hasIdgetGoods(){
     $.get('../json/shopCar.json','',function(res){
         for(var i = 0; i < res.length; i++){
@@ -319,9 +320,9 @@ function check(ele){
     var numEle = $($(ele).parent().parent().siblings()[2]).children().children()[1];
     var num = parseInt(numEle.value);
     var priceEle =  $($(ele).parent().parent().siblings()[3]).children()[0];
-    var totalMoney = parseFloat(priceEle.innerText);
+    var totalMoney = parseInt(priceEle.innerText);
+    console.log(priceEle.innerText)
     if(ele.checked){
-        // console.log(totalMoney)
         var checkoneLabel = [];
         for(var i = 0; i < $('.checkoneLabel').length; i++){
             if($($('.checkoneLabel')[i]).siblings()[0].checked){
@@ -358,7 +359,7 @@ function reduce(id,ele){
             }
             carList[i].number-- ;
             $(ele).siblings().val(carList[i].number);
-            totalmoneyEle.text("¥ " + parseInt(carList[i].number)*money + ".00");
+            totalmoneyEle.text(parseInt(carList[i].number)*money + ".00¥");
                 if(checkboxEle.checked){
                     $("#num").text(parseInt($("#num").text())-1);
                     $(".totalMoney > .total").text(parseInt($(".totalMoney > .total").text()) - money +".00¥");
@@ -368,7 +369,7 @@ function reduce(id,ele){
     localStorage.setItem('carList',JSON.stringify(carList));
 }
 
-    //添加按钮
+//添加按钮
 function add(id,ele){
     var carList = car.getCar();
     var totalmoneyPar = $(ele).parent().parent().siblings()[3];
@@ -381,7 +382,7 @@ function add(id,ele){
         if(id == carList[i].id){
             carList[i].number++ ;
             $(ele).siblings().val(carList[i].number);
-            totalmoneyEle.text("¥ " + parseInt(carList[i].number)*money +".00");
+            totalmoneyEle.text(parseInt(carList[i].number)*money +".00¥");
             if(checkboxEle.checked){
                 $("#num").text(parseInt($("#num").text())+1);
                 $(".totalMoney > .total").text(parseInt($(".totalMoney > .total").text()) + money +".00¥");
@@ -419,3 +420,15 @@ function change(ele,id,price){//ele为input框本身，num为购物车数据numb
         carChange(carList,id,numChange);
     }
 }
+
+//点击结算按钮触发页面跳转
+$('.clbtn').click(function(){
+    if(parseInt($(this).prev().children()[0].innerText) == 0){
+        alert('亲，请选择商品再结算');
+    }else if(uname == 'uname'){//没有登录--跳登录页
+        alert('您还未登录，即将跳往登录页面，请做好准备!')
+        $(this).children().attr('href','../html/login.html');
+    }else{
+        alert('结算成功!');
+    }
+});
