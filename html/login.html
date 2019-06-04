@@ -1,13 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" href="../images/indexImg/favicon.ico">
-    <title>创维--登录</title>
+    <title>创维集团-全球电商-登陆</title>
+    <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="../css/reset1.css">
+    <link rel="stylesheet" href="../css/login.css">
+
 </head>
+
 <body>
-    
+    <div class="header ">
+        <div class="header_top">
+            <div class="logo ">
+                <a href="./index.html">
+                    <img src="../images/registerImg/logo.png" alt="">
+                </a>
+            </div>
+            <p class="login">没有账号？
+                <a href="./register.html">请注册</a>
+            </p>
+        </div>
+
+    </div>
+    <!--      header      end  -->
+    <div class="content">
+        <img src="../images/registerImg/login_ad.png" alt="">
+        <div class="log">
+            <h1>会员登陆</h1>
+            <input type="text" class="form-control" placeholder="邮箱/手机号/用户名" name="" id="uname">
+            <input type="password" class="form-control" placeholder="请输入登陆密码" name="" id="pwd">
+            <input type="text" class="form-control" placeholder="请输入验证码" name="" id="yz">
+            <div id='checkCode'></div>
+
+            <button id="btn_a" onclick="checkCodeofRandom()">换一张</button>
+            <button class="btn">登陆</button>
+            <p>
+                <input type="checkbox" class="xuxiang" name="" id="">30天内记住我的登录信息
+                <a href="./register.html">注册</a>
+                <a href="">忘记密码？/</a>
+            </p>
+        </div>
+    </div>
+    <!--  content end -->
+    <div class="footer">
+        <div class="foot">
+            <ul>
+                <li>关于我们</li>
+                <li>|</li>
+                <li>联系我们</li>
+                <li>|</li>
+                <li>自助服务</li>
+                <li>|</li>
+                <li>友情链接</li>
+                <li>|</li>
+                <li>关注我们</li>
+                <li>|</li>
+                <li>购买流程</li>
+                <li>|</li>
+                <li>安装调试</li>
+                <li>|</li>
+                <li>税票制度</li>
+            </ul>
+            <p>ICP备案证号：粤ICP备09157852号</p>
+        </div>
+    </div>
+
 </body>
+
 </html>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/login.js"> </script>
