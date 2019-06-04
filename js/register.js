@@ -103,7 +103,7 @@ $(".btn").click(function () {
                     //给 库中 添加账号密码
                     $.ajax({
                         'type': 'post',
-                        'url': 'php/register_a.php',
+                        'url': '../php/search.php',
                         'data': {
                             'uname': uname,
                             'pwd': pwd
