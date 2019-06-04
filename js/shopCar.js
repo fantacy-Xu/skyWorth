@@ -83,130 +83,169 @@ window.onload = function(){
     }
 }
 
-// 页面加载后发送ajax请求
+function noIdgetGoods(){
+    var carList = car.getCar();
+    var str = ``;
+    if(carList.length != 0){//判断购物车有无商品，无的话直接退出函数
+        for(var i = 0; i < carList.length; i++){
+            str +=`
+                    <ul class="newbox">
+                        <li class="list_check">
+                            <div class="checkboxFive">
+                                <input onclick = 'check(this)' type="checkbox" id="checkboxFive${carList[i].id}" class="checkbox">
+                                <label for="checkboxFive${carList[i].id}"></label>
+                            </div>
+                        </li>
+                        <li class="list_con">
+                            <div class="list_img">
+                                <a href="#">
+                                    <img src="../images/indexImg/${carList[i].img}.jpg" alt="">
+                                </a>
+                            </div>
+                            <div class="list_text">
+                                <a href="../html/details.html?id=${carList[i].id}" id="marque">${carList[i].title}</a>
+                                <p class="p_padding">${carList[i].contents}</p>
+                                <p class="p_padding">配送公司:创维-RGB电子有限公司</p>
+                            </div>
+                        </li>
+                        <li class="list_price">
+                            <p class="price">
+                                ${parseInt(parseInt(carList[i].price*(0.9*10))/10)}.00¥
+                            </p>
+                            <p class="discount">
+                                ${carList[i].price}¥
+                            </p>
+                        </li>
+                        <li class="list_amount">
+                            <div class="amount_box">
+                                <a href="javascript:;" onclick = "reduce(${carList[i].id},this)" class="iconfont iconjianhao"></a>
+                                <input type="text" class="cnum" onblur = "change(this,${carList[i].id},${carList[i].price})" value = ${carList[i].number}>
+                                <a href="javascript:;" onclick = "add(${carList[i].id},this)" class="iconfont iconjiahao" style="right: 0" ></a>
+                            </div>
+                        </li>
+                        <li class="list_sum">
+                            <p class="sum_price">
+                                ${parseInt(parseInt(carList[i].price*(0.9*10))/10)*carList[i].number}.00¥
+                            </p>
+                        </li>
+                        <li class="list_operation">
+                            <a href="#" onclick = 'del(${carList[i].id})'>移除商品</a>
+                        </li>
+                    </ul>
+                    `
+                    $(".car_box").css('padding',0);
+                    $('.car_bottom').css('border',0);
+        }
+        $('.car_box').html(str);
+    }
+}
 
-    if(location.search){
-        $.get('../json/shopCar.json','',function(res){
-            var id = location.search.split('?')[1].split("&")[0].split('=')[1];
-            var number = location.search.split('?')[1].split("&")[1].split('=')[1];
-            for(var i = 0; i < res.length; i++){
-                if(id == res[i].id){
-                    res[i].number = number;
-                    var result = res[i];
-                }
+function hasIdgetGoods(){
+    $.get('../json/shopCar.json','',function(res){
+        for(var i = 0; i < res.length; i++){
+            if(id == res[i].id){
+                res[i].number = number;
+                var result = res[i];
             }
-            car.addToCar(result);
-            var carList = car.getCar();
-            var str = ``;
-            if(carList.length == 0){//判断购物车有无商品，无的话直接退出函数
-                return;
-            }
-            for(var i = 0; i < carList.length; i++){
-                str +=`
-                        <ul class="newbox">
-                            <li class="list_check">
-                                <div class="checkboxFive">
-                                    <input onclick = 'check(this)' type="checkbox" id="checkboxFive${carList[i].id}" class="checkbox">
-                                    <label for="checkboxFive${carList[i].id}" class = 'checkoneLabel'></label>
-                                </div>
-                            </li>
-                            <li class="list_con">
-                                <div class="list_img">
-                                    <a href="#">
-                                        <img src="../images/indexImg/${carList[i].img}.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="list_text">
-                                    <a href="../html/details.html?id=${carList[i].id}" id="marque">${carList[i].title}</a>
-                                    <p class="p_padding">${carList[i].contents}</p>
-                                    <p class="p_padding">配送公司:创维-RGB电子有限公司</p>
-                                </div>
-                            </li>
-                            <li class="list_price">
-                                <p class="price">
-                                    ${parseInt(parseInt(carList[i].price*(0.9*10))/10)}.00¥
-                                </p>
-                                <p class="discount">
-                                    ${carList[i].price}¥
-                                </p>
-                            </li>
-                            <li class="list_amount">
-                                <div class="amount_box">
-                                    <a href="javascript:;" onclick = "reduce(${carList[i].id},this)" class="iconfont iconjianhao"></a>
-                                    <input type="text" class="cnum" onblur = "change(this,${carList[i].id},${carList[i].price})" value = ${carList[i].number}>
-                                    <a href="javascript:;" onclick = "add(${carList[i].id},this)" class="iconfont iconjiahao" style="right: 0" ></a>
-                                </div>
-                            </li>
-                            <li class="list_sum">
-                                <p class="sum_price">
-                                    ${parseInt(parseInt(carList[i].price*(0.9*10))/10)*carList[i].number}.00¥
-                                </p>
-                            </li>
-                            <li class="list_operation">
-                                <a href="#" onclick = 'del(${carList[i].id})'>移除商品</a>
-                            </li>
-                        </ul>
-                        `
-                        $(".car_box").css('padding',0);
-                        $('.car_bottom').css('border',0);
-            }
-            $('.car_box').html(str);
-        },'json');
-    }else{
+        }
+        car.addToCar(result);
         var carList = car.getCar();
         var str = ``;
-        if(carList.length != 0){//判断购物车有无商品，无的话直接退出函数
-            for(var i = 0; i < carList.length; i++){
-                str +=`
-                        <ul class="newbox">
-                            <li class="list_check">
-                                <div class="checkboxFive">
-                                    <input onclick = 'check(this)' type="checkbox" id="checkboxFive${carList[i].id}" class="checkbox">
-                                    <label for="checkboxFive${carList[i].id}"></label>
-                                </div>
-                            </li>
-                            <li class="list_con">
-                                <div class="list_img">
-                                    <a href="#">
-                                        <img src="../images/indexImg/${carList[i].img}.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="list_text">
-                                    <a href="../html/details.html?id=${carList[i].id}" id="marque">${carList[i].title}</a>
-                                    <p class="p_padding">${carList[i].contents}</p>
-                                    <p class="p_padding">配送公司:创维-RGB电子有限公司</p>
-                                </div>
-                            </li>
-                            <li class="list_price">
-                                <p class="price">
-                                    ${parseInt(parseInt(carList[i].price*(0.9*10))/10)}.00¥
-                                </p>
-                                <p class="discount">
-                                    ${carList[i].price}¥
-                                </p>
-                            </li>
-                            <li class="list_amount">
-                                <div class="amount_box">
-                                    <a href="javascript:;" onclick = "reduce(${carList[i].id},this)" class="iconfont iconjianhao"></a>
-                                    <input type="text" class="cnum" onblur = "change(this,${carList[i].id},${carList[i].price})" value = ${carList[i].number}>
-                                    <a href="javascript:;" onclick = "add(${carList[i].id},this)" class="iconfont iconjiahao" style="right: 0" ></a>
-                                </div>
-                            </li>
-                            <li class="list_sum">
-                                <p class="sum_price">
-                                    ${parseInt(parseInt(carList[i].price*(0.9*10))/10)*carList[i].number}.00¥
-                                </p>
-                            </li>
-                            <li class="list_operation">
-                                <a href="#" onclick = 'del(${carList[i].id})'>移除商品</a>
-                            </li>
-                        </ul>
-                        `
-                        $(".car_box").css('padding',0);
-                        $('.car_bottom').css('border',0);
-            }
-            $('.car_box').html(str);
+        if(carList.length == 0){//判断购物车有无商品，无的话直接退出函数
+            return;
         }
+        for(var i = 0; i < carList.length; i++){
+            str +=`
+                    <ul class="newbox">
+                        <li class="list_check">
+                            <div class="checkboxFive">
+                                <input onclick = 'check(this)' type="checkbox" id="checkboxFive${carList[i].id}" class="checkbox">
+                                <label for="checkboxFive${carList[i].id}" class = 'checkoneLabel'></label>
+                            </div>
+                        </li>
+                        <li class="list_con">
+                            <div class="list_img">
+                                <a href="#">
+                                    <img src="../images/indexImg/${carList[i].img}.jpg" alt="">
+                                </a>
+                            </div>
+                            <div class="list_text">
+                                <a href="../html/details.html?id=${carList[i].id}" id="marque">${carList[i].title}</a>
+                                <p class="p_padding">${carList[i].contents}</p>
+                                <p class="p_padding">配送公司:创维-RGB电子有限公司</p>
+                            </div>
+                        </li>
+                        <li class="list_price">
+                            <p class="price">
+                                ${parseInt(parseInt(carList[i].price*(0.9*10))/10)}.00¥
+                            </p>
+                            <p class="discount">
+                                ${carList[i].price}¥
+                            </p>
+                        </li>
+                        <li class="list_amount">
+                            <div class="amount_box">
+                                <a href="javascript:;" onclick = "reduce(${carList[i].id},this)" class="iconfont iconjianhao"></a>
+                                <input type="text" class="cnum" onblur = "change(this,${carList[i].id},${carList[i].price})" value = ${carList[i].number}>
+                                <a href="javascript:;" onclick = "add(${carList[i].id},this)" class="iconfont iconjiahao" style="right: 0" ></a>
+                            </div>
+                        </li>
+                        <li class="list_sum">
+                            <p class="sum_price">
+                                ${parseInt(parseInt(carList[i].price*(0.9*10))/10)*carList[i].number}.00¥
+                            </p>
+                        </li>
+                        <li class="list_operation">
+                            <a href="#" onclick = 'del(${carList[i].id})'>移除商品</a>
+                        </li>
+                    </ul>
+                    `
+                    $(".car_box").css('padding',0);
+                    $('.car_bottom').css('border',0);
+        }
+        $('.car_box').html(str);
+    },'json');
+}
+
+
+
+// 页面加载后发送ajax请求
+var stringInfo =  location.search;
+var uname = 'uname';
+/* console.log(arr); */
+    if(stringInfo){
+        //用户名是否存在，存在则修改账号状态
+        /* console.log(stringInfo); */
+        var arr = stringInfo.split('?')[1].split('&');
+        if(stringInfo.indexOf(uname) != -1){   //存在用户名
+            if(arr.length == 3){    //商品ID存在，地址栏的截取方式
+                uname = stringInfo.split('?')[1].split("&")[2].split('=')[1];
+                var id = location.search.split('?')[1].split("&")[0].split('=')[1];
+                var number = location.search.split('?')[1].split("&")[1].split('=')[1];
+
+                hasIdgetGoods();
+
+            }else{//商品ID不存在，地址栏的截取方式
+                uname = stringInfo.split('?')[1].split('=')[1];
+                //账号处于登录状态
+                noIdgetGoods();
+            }
+            //点击logo跳回主页，根据登录状态来判断进行跳转方式
+            $('.backIndex').attr('href',`./index.html?uname=${uname}`);
+            $('.login').children().attr("href",'javascript:').text(uname);
+            $('.register').addClass('exit').children().attr("href",'javascript:').text("退出");
+            //退出账号
+            $('.exit').click(function(){
+                location.href = './index.html';
+            })
+        }else{
+            var id = location.search.split('?')[1].split("&")[0].split('=')[1];
+            var number = location.search.split('?')[1].split("&")[1].split('=')[1];
+            hasIdgetGoods();
+        }
+    }else{
+        //地址栏没有任何数据
+        noIdgetGoods();
     
     }
 
@@ -217,7 +256,12 @@ function del(id){
         return;
     }
     if(car.delGoods(id)){
-       location.href = '../html/shopCar.html';
+        if(stringInfo.indexOf(uname) != -1){
+            location.href = `../html/shopCar.html?uname=${uname}`;
+        }else{
+            location.href = '../html/shopCar.html';
+        }
+       
     }else{
         alert("删除失败");
     }

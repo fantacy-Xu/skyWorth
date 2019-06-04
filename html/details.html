@@ -18,9 +18,9 @@
     <div class="main header-nav">
         <div class="header-left">欢迎您，来到创维官方商城</div>
         <div class="header-right">
-            <ul>
-                <li><a href="./login.html">登录</a></li>
-                <li><a href="./register.html">注册</a></li>
+            <ul class="uname-box">
+                <li class="login"><a href="./login.html">登录</a></li>
+                <li class="register"><a href="./register.html">注册</a></li>
                 <li><a href="#">我的订单</a></li>
                 <li class="top-mobile-wrap">手机端
                     <img src="../images/indexImg/little.png" alt="" class="littleImg">
@@ -34,7 +34,7 @@
 <div class="top-wrap">
     <div class="main top-wrap-con">
         <div class="logo">
-            <a href="./index.html" target="_blank">
+            <a href="./index.html" target="_blank" class="backIndex">
                 <img src="../images/indexImg/logo.png" alt="">
                 <span class="midspan"></span>
             </a>
@@ -501,7 +501,7 @@
 
 
 </body>
-<script src="../js/details.js"></script>
+
 
 <script>
     var AddInp = function (i) {
@@ -515,23 +515,51 @@
 
         }
     };
+    
+    //获取地址栏中的uname
+    var uname = location.search.split("?")[1].split('&')[1];
+    
+    if(uname){
+        uname = location.search.split("?")[1].split('&')[1].split('=')[1];
+        var id = location.search.split("?")[1].split('&')[0].split('=')[1];
+        //点击logo跳回主页，根据登录状态来判断进行跳转方式
+        $('.backIndex').attr('href',`./index.html?uname=${uname}`);
+        $('.login').children().attr("href",'javascript:').text(uname);
+        $('.register').addClass('exit').children().attr("href",'javascript:').text("退出");
+        //退出账号
+        $('.exit').click(function(){
+            location.href = './index.html';
+        })
+        
+    }else{
+        var id = location.search.split("=")[1];
+       
+    }
+    /* console.log(uname); */
+    //获取地址栏中的id
+   
+    /* console.log(id); */
     //加入购物车
     $('#btn_add_shop_cart').on('click',function () {
         //拿到商品的数量
         var proNum = $('#inpQuantity').val();
-
         if(proNum == '' ){
             layer.msg('商品数量格式有误');
             return;
         }
 
         //拿到当前页面的url
-        var page_url = location.search ;
-
+        /* var page_url = location.search ; */
+        
         //拿到数据的id
-        var indexId = page_url.split("=")[1];
-
-        location.href = `./shopCar.html?id=${indexId}&proNum=${proNum}` ;
+        /* var indexId = page_url.split("=")[1]; */
+        var indexId = id;
+        var address =  `./shopCar.html?id=${id}&proNum=${proNum}` ;
+        if(uname){
+            location.href = address + `&uname=${uname}`;
+        }else{
+            location.href = address;
+        }
     });
 
 
@@ -545,12 +573,18 @@
         }
 
         //拿到当前页面的url
-        var page_url = location.search ;
+        /* var page_url = location.search ; */
 
         //拿到数据的id
-        var indexId = page_url.split("=")[1];
-
-        location.href = `./shopCar.html?id=${indexId}&proNum=${proNum}` ;
+        /* var indexId = page_url.split("=")[1]; */
+        var indexId = id;
+        var address =  `./shopCar.html?id=${id}&proNum=${proNum}` ;
+        if(uname){
+            location.href = address + `&uname=${uname}`;
+        }else{
+            location.href = address;
+        }
+       
     });
     $('#btn_add_l_shop_cart').on('click',function () {
         //拿到商品的数量
@@ -562,12 +596,19 @@
         }
 
         //拿到当前页面的url
-        var page_url = location.search ;
+        /* var page_url = location.search ; */
 
         //拿到数据的id
-        var indexId = page_url.split("=")[1];
-
+        /* var indexId = page_url.split("=")[1]; */
+        var indexId = id;
+        var address =  `./shopCar.html?id=${id}&proNum=${proNum}` ;
+        if(uname){
+            location.href = `./shopCar.html?id=${indexId}&proNum=${proNum}&uname=${uname}` ;
+        }else{
             location.href = `./login.html?id=${indexId}&proNum=${proNum}` ;
+        }
+            
     })
 </script>
+<script src="../js/details.js"></script>
 </html>

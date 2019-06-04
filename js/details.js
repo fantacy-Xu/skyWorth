@@ -18,10 +18,17 @@ window.onload = function(){
 
         success:function (data) {
             //拿到当前页面的url
-            var page_url = location.search ;
+            var uname =  location.search.split("?")[1].split('&')[1] ;
 
             //拿到数据的id
-            var indexId = page_url.split("=")[1];
+            /* var indexId = page_url.split("=")[1]; */
+            if(uname){
+                var indexId = location.search.split("?")[1].split('&')[0].split('=')[1];
+            }else{
+                var indexId =location.search.split("=")[1];
+            }
+            
+            /* console.log(indexId); */
 
             for(var k in data){
 
