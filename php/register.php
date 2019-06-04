@@ -1,5 +1,5 @@
 <?php
-mysql_connect('127.0.0.1','root','root');
+mysql_connect('localhost','root','root');
 mysql_query('use xiong');
 
 $uname = $_POST['uname'];

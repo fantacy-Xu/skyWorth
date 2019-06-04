@@ -56,7 +56,7 @@ $(".btn").click(function () {
         $.post("../php/login.php", { "uname": uname, "pwd": pwd }, function (res) {
             if (res.code == 200) {
                 alert(res.message);
-                window.location.href = './index.html';//跳转页面链接
+                window.location.href = `./index.html?uname=${uname}`;//跳转页面链接
             } else {
                 alert(res.message);
             }

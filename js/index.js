@@ -128,5 +128,19 @@
         $('.lock').append(lock_other);
 
     },'json');
+
+    //登录状态获取
+    var uname = location.search.split('?')[1].split('=')[1];
+    /* console.log(uname); */
+    if(uname){
+        $('.login').children().attr("href",'javascript:').text(uname);
+        $('.register').addClass('exit').children().attr("href",'javascript:').text("退出");
+        //退出账号
+        $('.exit').click(function(){
+            location.href = './index.html';
+        })
+    }
+    
+    
     
 })()
