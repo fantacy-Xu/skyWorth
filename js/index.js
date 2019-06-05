@@ -41,6 +41,7 @@
         uname = uname.split('?')[1].split('=')[1]
         $('.login').children().attr("href",'javascript:').text(uname);
         $('.register').addClass('exit').children().attr("href",'javascript:').text("退出");
+        $('.goodsList').children().attr("href",`./ziye.html?uname=${uname}`);
         //退出账号
         $('.exit').click(function(){
             location.href = './index.html';
@@ -111,6 +112,7 @@
         $('.shop-btn').click(function(){
             location.href = `./shopCar.html`;   
         })
+        $('.goodsList').children().attr("href",`./ziye.html`);
         
         //循环获取多个数据
         function getStr(startIndex,endIndex,data){
